@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d_m container">
+    <img src="{{user.profile.image.url}}" class="rounded-circle border border-dark mb-3" alt="user_image" style="height:50px; width:50px;">
+    <h1>{{user.profile.user.username}}</h1>
+    <h1>{{user.profile.user.email}}</h1>
+    {% if user.profile.user == user %}
+    <button type="submit" class="btn btn-warning">Update</button>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url "home" %}" class="btn btn-primary ms-5">Back to home</a>
+    {% endif %}
+    
+    {% for post in posts %}
+    {% if post.user == user %}
+    <div class="card mt-3 mx-auto w-75">
+        {% if post.media_type == "image" %}
+        <img src="{{post.p_img.url}}" class="card-img-top" alt="post_image">
+        {% elif post.media_type == "video" %}
+        <video class=" object-fit-none" controls style="height:400px; padding:20px;">
+          <source src="{{post.p_img.url}}"  type="video/mp4">
+        </video>
+        {% endif %}
+        <div class="card-body">
+          <div class="d-flex ">
+            <img src="{{post.user.profile.image.url}}" class="rounded-circle border border-dark mb-3" alt="user_image" style="height:33px; width:35px;">
+            <div style="margin-top:-7px;">
+              <a href="{% url "profile" %}" class="nav-link active "><h6 class="profile_icon_text ms-2 d-inline" style="">{{post.user.username}}</h6></a>
+              <p class="ms-2 card-text " style="margin-top:-5px;"><small class="text-body-secondary">{{post.date}}</small></p>
+            </div>
+          </div>
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.desc}}</p>
+          
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    
+</div>
+
+{% endblock content %}

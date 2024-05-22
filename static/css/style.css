@@ -1,0 +1,39 @@
+.form{
+    margin-top: 100px;
+}
+/* .navbar{
+    height: 60px;
+   
+} */
+
+.d_m{
+    margin-top: 65px;
+
+}
+ul li {
+    padding: 0 5px;
+}
+.navbar-toggler, .btn-close{
+    box-shadow: none;
+    outline: none;
+    border: .1px solid rgb(255, 255, 255);
+}
+
+.navbar-toggler:focus, .btn-close:focus{
+    box-shadow: none;
+    outline: none;
+    border: .1px solid rgb(255, 255, 255);
+}
+
+@media (max-width: 992px) {
+    .navbar-toggler{
+
+        margin-right: -100px;
+    }
+}
+.card-img-top{
+    padding: 5px;
+    height: 300px;
+    
+}
+

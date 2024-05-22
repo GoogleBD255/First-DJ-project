@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action='{% url "signup" %}' method='POST' class="form">
+    {% csrf_token %}
+    <div class="container" >
+        <h2 class="t_text text-center">Create an Account</h2>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username"  id="exampleInputEmail1" required >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email"  id="exampleInputEmail1" required >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password1"  id="exampleInputEmail1" required >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Confirm password</label>
+            <input type="password" class="form-control" name="password2"  id="exampleInputEmail1" required >
+          </div>
+            
+          
+          <button type="submit" class="btn btn-primary">Create</button><br>
+          <p>Already have an account <a href="{% url "login" %}">Login</a></p>
+    </div>
+</form>
+
+{% endblock content %}

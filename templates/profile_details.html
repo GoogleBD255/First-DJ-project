@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d_m container">
+    <img src="{{object.user.profile.image.url}}" class="rounded-3 border border-dark mb-2 mt-3" alt="user_image" style="height:50px; width:50px;">
+    <h1>{{object.user}}</h1>
+    <h1>{{object.user.email}}</h1>
+    {% if object.user == user %}
+    <button type="submit" class="btn btn-warning">Update</button>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url "home" %}" class="btn btn-primary ms-5">Back to home</a>
+    {% endif %}
+
+    
+   
+    
+    <div class="card mt-3 mx-auto w-75">
+        {% if object.user.media_type == "image" %}
+        <img src="{{post.p_img.url}}" class="card-img-top" alt="post_image">
+        {% elif post.media_type == "video" %}
+        <video class=" object-fit-none" controls style="height:400px; padding:20px;">
+          <source src="{{post.p_img.url}}"  type="video/mp4">
+        </video>
+        {% endif %}
+        <div class="card-body">
+          <div class="d-flex ">
+            <img src="{{object.image.url}}" class="rounded-circle border border-dark mb-3" alt="user_image" style="height:33px; width:35px;">
+            <div style="margin-top:-7px;">
+              <a href="{% url "profile" %}" class="nav-link active "><h6 class="profile_icon_text ms-2 d-inline" style="">{{object.user.username}}</h6></a>
+              <p class="ms-2 card-text " style="margin-top:-5px;"><small class="text-body-secondary">{{object.user.post.date}}</small></p>
+            </div>
+          </div>
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.desc}}</p>
+          
+        </div>
+    </div>
+  
+   
+    
+    
+   
+    
+</div>
+
+{% endblock content %}
